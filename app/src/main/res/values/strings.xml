@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Paperless</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="loading">Loading...</string>
+    <string name="invalid_response">Invalid Response Received</string>
+    <string name="server_connection_error">The connection to the server timed out</string>
+    <string name="ok">OK</string>
+</resources>
