@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.rentcentric.paperlesscounter.Activities.MainActivity;
+import com.rentcentric.paperlesscounter.Preferences.LoginPreference;
 import com.rentcentric.paperlesscounter.Utility.Extensions;
 import com.rentcentric.paperlesscounter.Models.Requests.SaveCustomerSignatureRequest;
 import com.rentcentric.paperlesscounter.Models.Responses.SaveCustomerSignatureResponse;
@@ -19,12 +20,13 @@ public class SaveCustomerSignatureCallBack implements Callback<SaveCustomerSigna
 
     private AppCompatActivity context;
     private ProgressDialog progressDialog;
+    private LoginPreference loginPreference;
 
     public SaveCustomerSignatureCallBack(AppCompatActivity context, SaveCustomerSignatureRequest request) {
         this.context = context;
         progressDialog = ProgressDialog.show(context, "", context.getString(R.string.loading));
-
-        RetrofitFactory.build().SaveCustomerSignature(request).enqueue(this);
+        loginPreference = new LoginPreference(context);
+        RetrofitFactory.getOldClientService(loginPreference.getServerName(), loginPreference.getClientId()).saveCustomerSignature(request).enqueue(this);
     }
 
     @Override

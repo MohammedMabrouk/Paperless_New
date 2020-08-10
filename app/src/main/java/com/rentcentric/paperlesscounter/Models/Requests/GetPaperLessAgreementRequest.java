@@ -5,43 +5,55 @@ import com.google.gson.annotations.SerializedName;
 
 public class GetPaperLessAgreementRequest {
 
-    @SerializedName("AdminID")
-    @Expose
-    private String adminID;
-    @SerializedName("LocationId")
-    @Expose
-    private String locationId;
     @SerializedName("PaperLessAdminLoginId")
     @Expose
-    private String paperLessAdminLoginId;
+    private Integer paperLessAdminLoginId;
+    @SerializedName("AdminId")
+    @Expose
+    private String adminId;
+    @SerializedName("LocationId")
+    @Expose
+    private Integer locationId;
+    @SerializedName("MobileRequestId")
+    @Expose
+    private Integer mobileRequestId;
 
-    public GetPaperLessAgreementRequest(String adminID, String locationId, String paperLessAdminLoginId) {
-        this.adminID = adminID;
-        this.locationId = locationId;
+    public GetPaperLessAgreementRequest(Integer paperLessAdminLoginId, String adminId, Integer locationId, Integer mobileRequestId) {
         this.paperLessAdminLoginId = paperLessAdminLoginId;
-    }
-
-    public String getAdminID() {
-        return adminID;
-    }
-
-    public void setAdminID(String adminID) {
-        this.adminID = adminID;
-    }
-
-    public String getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(String locationId) {
+        this.adminId = adminId;
         this.locationId = locationId;
+        this.mobileRequestId = mobileRequestId;
     }
 
-    public String getPaperLessAdminLoginId() {
+    public Integer getPaperLessAdminLoginId() {
         return paperLessAdminLoginId;
     }
 
-    public void setPaperLessAdminLoginId(String paperLessAdminLoginId) {
+    public void setPaperLessAdminLoginId(Integer paperLessAdminLoginId) {
         this.paperLessAdminLoginId = paperLessAdminLoginId;
+    }
+
+    public String getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
+
+    public Integer getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Integer locationId) {
+        this.locationId = locationId;
+    }
+
+    public Integer getMobileRequestId() {
+        return mobileRequestId;
+    }
+
+    public void setMobileRequestId(Integer mobileRequestId) {
+        this.mobileRequestId = mobileRequestId;
     }
 }

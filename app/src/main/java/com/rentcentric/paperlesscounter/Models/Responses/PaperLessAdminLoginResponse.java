@@ -1,3 +1,4 @@
+
 package com.rentcentric.paperlesscounter.Models.Responses;
 
 import com.google.gson.annotations.Expose;
@@ -5,59 +6,49 @@ import com.google.gson.annotations.SerializedName;
 
 public class PaperLessAdminLoginResponse {
 
-    @SerializedName("AdminId")
+    @SerializedName("Result")
     @Expose
-    private String adminId;
-    @SerializedName("FullName")
+    private PaperLessAdminLoginResult result;
+    @SerializedName("Description")
     @Expose
-    private String fullName;
-    @SerializedName("LocationId")
+    private String description;
+    @SerializedName("ExceptionMessage")
     @Expose
-    private String locationId;
-    @SerializedName("PaperLessAdminLoginId")
+    private String exceptionMessage;
+    @SerializedName("State")
     @Expose
-    private String paperLessAdminLoginId;
-    @SerializedName("StatusInfo")
-    @Expose
-    private StatusInfo statusInfo;
+    private Boolean state;
 
-    public String getAdminId() {
-        return adminId;
+    public PaperLessAdminLoginResult getResult() {
+        return result;
     }
 
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
+    public void setResult(PaperLessAdminLoginResult result) {
+        this.result = result;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getLocationId() {
-        return locationId;
+    public String getExceptionMessage() {
+        return exceptionMessage;
     }
 
-    public void setLocationId(String locationId) {
-        this.locationId = locationId;
+    public void setExceptionMessage(String exceptionMessage) {
+        this.exceptionMessage = exceptionMessage;
     }
 
-    public String getPaperLessAdminLoginId() {
-        return paperLessAdminLoginId;
+    public Boolean getState() {
+        return state;
     }
 
-    public void setPaperLessAdminLoginId(String paperLessAdminLoginId) {
-        this.paperLessAdminLoginId = paperLessAdminLoginId;
+    public void setState(Boolean state) {
+        this.state = state;
     }
 
-    public StatusInfo getStatusInfo() {
-        return statusInfo;
-    }
-
-    public void setStatusInfo(StatusInfo statusInfo) {
-        this.statusInfo = statusInfo;
-    }
 }

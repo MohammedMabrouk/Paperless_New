@@ -1,32 +1,54 @@
+
 package com.rentcentric.paperlesscounter.Models.Responses;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class GetPaperLessCounterAdsResponse {
 
-    @SerializedName("PaperLessCounterAdsList")
+    @SerializedName("Result")
     @Expose
-    private List<PaperLessCounterAdsList> paperLessCounterAdsList = null;
-    @SerializedName("StatusInfo")
+    private GetPaperLessCounterAdsResult getPaperLessCounterAdsResult;
+    @SerializedName("Description")
     @Expose
-    private StatusInfo statusInfo;
+    private String description;
+    @SerializedName("ExceptionMessage")
+    @Expose
+    private Object exceptionMessage;
+    @SerializedName("State")
+    @Expose
+    private Boolean state;
 
-    public List<PaperLessCounterAdsList> getPaperLessCounterAdsList() {
-        return paperLessCounterAdsList;
+    public GetPaperLessCounterAdsResult getGetPaperLessCounterAdsResult() {
+        return getPaperLessCounterAdsResult;
     }
 
-    public void setPaperLessCounterAdsList(List<PaperLessCounterAdsList> paperLessCounterAdsList) {
-        this.paperLessCounterAdsList = paperLessCounterAdsList;
+    public void setGetPaperLessCounterAdsResult(GetPaperLessCounterAdsResult getPaperLessCounterAdsResult) {
+        this.getPaperLessCounterAdsResult = getPaperLessCounterAdsResult;
     }
 
-    public StatusInfo getStatusInfo() {
-        return statusInfo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setStatusInfo(StatusInfo statusInfo) {
-        this.statusInfo = statusInfo;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    public Object getExceptionMessage() {
+        return exceptionMessage;
+    }
+
+    public void setExceptionMessage(Object exceptionMessage) {
+        this.exceptionMessage = exceptionMessage;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
 }

@@ -8,6 +8,7 @@ import com.rentcentric.paperlesscounter.Models.Requests.MobileUserLoginRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.PaperLessAdminLoginRequest;
 import com.rentcentric.paperlesscounter.Models.Responses.MobileUserLoginResponse;
 import com.rentcentric.paperlesscounter.Network.RetrofitFactory;
+import com.rentcentric.paperlesscounter.Preferences.LoginPreference;
 import com.rentcentric.paperlesscounter.R;
 import com.rentcentric.paperlesscounter.Utility.Extensions;
 
@@ -20,25 +21,27 @@ public class MobileUserLoginCallBack implements Callback<MobileUserLoginResponse
     private AppCompatActivity context;
     private ProgressDialog progressDialog;
     private MobileUserLoginRequest request;
+    private LoginPreference loginPreference;
 
     public MobileUserLoginCallBack(AppCompatActivity context, MobileUserLoginRequest request) {
         this.context = context;
         this.request = request;
+        loginPreference = new LoginPreference(context);
         progressDialog = ProgressDialog.show(context, "", context.getString(R.string.loading));
 
-        RetrofitFactory.buildPortal().MobileUserLogin(request).enqueue(this);
+        RetrofitFactory.getUserLoginService().mobileUserLogin(request).enqueue(this);
     }
 
     @Override
     public void onResponse(Call<MobileUserLoginResponse> call, Response<MobileUserLoginResponse> response) {
         if (response.isSuccessful()) {
             if (response.body().getStatus().getStatusCode().equals("0")) {
-                RetrofitFactory.WWW = response.body().getServerName();
-                RetrofitFactory.ClientID = response.body().getClientID().toString();
+                loginPreference.setServerName(response.body().getServerName());
+                loginPreference.setClientId(response.body().getClientID().toString());
 
                 new PaperLessAdminLoginCallBack(context, progressDialog, new PaperLessAdminLoginRequest(
                         request.getEmail(),
-                        RetrofitFactory.ClientID,
+                        loginPreference.getClientId(),
                         request.getPassword()));
             } else {
                 progressDialog.dismiss();

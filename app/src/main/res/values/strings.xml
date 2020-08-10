@@ -6,4 +6,9 @@
     <string name="invalid_response">Invalid Response Received</string>
     <string name="server_connection_error">The connection to the server timed out</string>
     <string name="ok">OK</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="required">required</string>
+    <string name="invalid_email_address_error">Invalid email address</string>
+    <string name="loading_txt">loading...</string>
 </resources>

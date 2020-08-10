@@ -1,3 +1,4 @@
+
 package com.rentcentric.paperlesscounter.Models.Responses;
 
 import com.google.gson.annotations.Expose;
@@ -5,25 +6,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class PaperLessCounterAdsList {
 
-    @SerializedName("Duration")
-    @Expose
-    private Integer duration;
-    @SerializedName("PaperImage")
-    @Expose
-    private String paperImage;
     @SerializedName("PaperLessCounterAdsID")
     @Expose
     private Integer paperLessCounterAdsID;
+    @SerializedName("PaperImage")
+    @Expose
+    private String paperImage;
+    @SerializedName("Duration")
+    @Expose
+    private Integer duration;
     @SerializedName("PaperOrder")
     @Expose
     private Integer paperOrder;
 
-    public Integer getDuration() {
-        return duration;
+    public Integer getPaperLessCounterAdsID() {
+        return paperLessCounterAdsID;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setPaperLessCounterAdsID(Integer paperLessCounterAdsID) {
+        this.paperLessCounterAdsID = paperLessCounterAdsID;
     }
 
     public String getPaperImage() {
@@ -34,12 +35,12 @@ public class PaperLessCounterAdsList {
         this.paperImage = paperImage;
     }
 
-    public Integer getPaperLessCounterAdsID() {
-        return paperLessCounterAdsID;
+    public Integer getDuration() {
+        return duration;
     }
 
-    public void setPaperLessCounterAdsID(Integer paperLessCounterAdsID) {
-        this.paperLessCounterAdsID = paperLessCounterAdsID;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     public Integer getPaperOrder() {
@@ -49,4 +50,5 @@ public class PaperLessCounterAdsList {
     public void setPaperOrder(Integer paperOrder) {
         this.paperOrder = paperOrder;
     }
+
 }

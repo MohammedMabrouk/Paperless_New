@@ -54,7 +54,7 @@ public class Extensions {
         alert.show();
     }
 
-    public static boolean isNotNullOrEmpty(String string) {
-        return string != null && !string.isEmpty();
+    public static boolean isNullOrEmpty(String string) {
+        return string == null || string.isEmpty();
     }
 }

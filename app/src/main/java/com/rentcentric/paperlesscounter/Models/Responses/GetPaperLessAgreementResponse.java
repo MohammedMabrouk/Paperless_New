@@ -1,3 +1,4 @@
+
 package com.rentcentric.paperlesscounter.Models.Responses;
 
 import com.google.gson.annotations.Expose;
@@ -5,59 +6,49 @@ import com.google.gson.annotations.SerializedName;
 
 public class GetPaperLessAgreementResponse {
 
-    @SerializedName("AdminId")
+    @SerializedName("Result")
     @Expose
-    private String adminId;
-    @SerializedName("AgreementId")
+    private GetPaperLessAgreementResult result;
+    @SerializedName("Description")
     @Expose
-    private String agreementId;
-    @SerializedName("AgreementSignId")
+    private String description;
+    @SerializedName("ExceptionMessage")
     @Expose
-    private String agreementSignId;
-    @SerializedName("AgreementUrl")
+    private String exceptionMessage;
+    @SerializedName("State")
     @Expose
-    private String agreementUrl;
-    @SerializedName("StatusInfo")
-    @Expose
-    private StatusInfo statusInfo;
+    private Boolean state;
 
-    public String getAdminId() {
-        return adminId;
+    public GetPaperLessAgreementResult getResult() {
+        return result;
     }
 
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
+    public void setResult(GetPaperLessAgreementResult result) {
+        this.result = result;
     }
 
-    public String getAgreementId() {
-        return agreementId;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAgreementId(String agreementId) {
-        this.agreementId = agreementId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getAgreementSignId() {
-        return agreementSignId;
+    public String getExceptionMessage() {
+        return exceptionMessage;
     }
 
-    public void setAgreementSignId(String agreementSignId) {
-        this.agreementSignId = agreementSignId;
+    public void setExceptionMessage(String exceptionMessage) {
+        this.exceptionMessage = exceptionMessage;
     }
 
-    public String getAgreementUrl() {
-        return agreementUrl;
+    public Boolean getState() {
+        return state;
     }
 
-    public void setAgreementUrl(String agreementUrl) {
-        this.agreementUrl = agreementUrl;
+    public void setState(Boolean state) {
+        this.state = state;
     }
 
-    public StatusInfo getStatusInfo() {
-        return statusInfo;
-    }
-
-    public void setStatusInfo(StatusInfo statusInfo) {
-        this.statusInfo = statusInfo;
-    }
 }

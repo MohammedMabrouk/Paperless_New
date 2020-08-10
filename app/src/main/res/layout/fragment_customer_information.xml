@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CustomerInformationFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <TextView
+            android:id="@+id/first_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="First Name"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/basic_title_tv" />
+
+        <TextView
+            android:id="@+id/last_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Last Name"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/first_name_et" />
+
+        <TextView
+            android:id="@+id/email_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Email"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/last_name_et" />
+
+        <TextView
+            android:id="@+id/phone_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Phone"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/email_et" />
+
+        <TextView
+            android:id="@+id/birthday_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Birthday"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/phone_et" />
+
+        <TextView
+            android:id="@+id/address_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Address"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/birthday_tv" />
+
+        <TextView
+            android:id="@+id/city_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="City"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/address_et" />
+
+        <TextView
+            android:id="@+id/state_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="State/Province"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/city_et" />
+
+        <TextView
+            android:id="@+id/country_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Country"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/state_spinner" />
+
+        <TextView
+            android:id="@+id/zipcode_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Zip/Postal Code"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/country_spinner" />
+
+        <TextView
+            android:id="@+id/driver_license_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Driver License Number"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/driver_license_tv" />
+
+        <TextView
+            android:id="@+id/credit_card_type_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Credit Card Type"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/credit_card_title_tv" />
+
+        <TextView
+            android:id="@+id/credit_card_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Credit Card Number"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/credit_card_type_spinner" />
+
+        <TextView
+            android:id="@+id/company_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Company Name"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/other_title_tv" />
+
+        <TextView
+            android:id="@+id/insurance_company_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Insurance Company"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/company_phone_et" />
+
+        <TextView
+            android:id="@+id/company_phone_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Company Phone"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/company_name_et" />
+
+        <TextView
+            android:id="@+id/policy_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Policy Number"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_company_et" />
+
+        <TextView
+            android:id="@+id/ssn_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="SIN/SSN"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/policy_number_et" />
+
+        <TextView
+            android:id="@+id/airport_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Airport"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/ssn_et" />
+
+        <TextView
+            android:id="@+id/airline_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Airline"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/airport_et" />
+
+        <TextView
+            android:id="@+id/flight_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Flight Number"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/airline_et" />
+
+        <TextView
+            android:id="@+id/special_request_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Special Request / Local Information"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/flight_number_et" />
+
+        <TextView
+            android:id="@+id/card_holder_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Card Holder"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/credit_Card_number_et" />
+
+        <TextView
+            android:id="@+id/cvv_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="CVV"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/card_holder_et" />
+
+        <TextView
+            android:id="@+id/card_expiry_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Card Expiry"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/card_expiry_month_et"
+            app:layout_constraintTop_toBottomOf="@+id/card_holder_et" />
+
+        <TextView
+            android:id="@+id/driver_license_expiry_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Driver License Expiry"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/driver_license_number_et" />
+
+        <TextView
+            android:id="@+id/driver_license_state_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Driver License State"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/driver_license_expiry_tv" />
+
+        <EditText
+            android:id="@+id/first_name_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/first_name_tv" />
+
+        <EditText
+            android:id="@+id/last_name_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/last_name_tv" />
+
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/email_tv" />
+
+        <EditText
+            android:id="@+id/phone_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/phone_tv" />
+
+        <TextView
+            android:id="@+id/birthday_tv"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="40dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/birthday_title_tv" />
+
+        <TextView
+            android:id="@+id/driver_license_expiry_tv"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="40dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/driver_license_expiry_title_tv" />
+
+        <EditText
+            android:id="@+id/card_expiry_month_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/input_round_bg"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:hint="Month"
+            android:inputType="number"
+            android:maxLength="2"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="40dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/card_expiry_year_et"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cvv_et"
+            app:layout_constraintTop_toBottomOf="@+id/card_expiry_title_tv" />
+
+        <EditText
+            android:id="@+id/card_expiry_year_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:hint="Year"
+            android:inputType="number"
+            android:maxLength="2"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="40dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/card_expiry_month_et"
+            app:layout_constraintTop_toBottomOf="@+id/card_expiry_title_tv" />
+
+        <EditText
+            android:id="@+id/address_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/address_tv" />
+
+        <EditText
+            android:id="@+id/city_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/city_tv" />
+
+        <EditText
+            android:id="@+id/zipcode_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/zipcode_tv" />
+
+        <EditText
+            android:id="@+id/driver_license_number_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/driver_license_number_tv" />
+
+        <EditText
+            android:id="@+id/credit_Card_number_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="number"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/credit_card_number_tv" />
+
+        <EditText
+            android:id="@+id/card_holder_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/card_holder_tv" />
+
+        <EditText
+            android:id="@+id/company_name_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/company_name_tv" />
+
+        <EditText
+            android:id="@+id/insurance_company_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_company_tv" />
+
+        <EditText
+            android:id="@+id/ssn_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/ssn_tv" />
+
+        <EditText
+            android:id="@+id/airport_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/airport_tv" />
+
+        <EditText
+            android:id="@+id/airline_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/airline_tv" />
+
+        <EditText
+            android:id="@+id/flight_number_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/flight_number_tv" />
+
+        <EditText
+            android:id="@+id/special_request_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="text"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/special_request_tv" />
+
+        <EditText
+            android:id="@+id/company_phone_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/company_phone_tv" />
+
+        <EditText
+            android:id="@+id/policy_number_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/policy_number_tv" />
+
+        <EditText
+            android:id="@+id/cvv_et"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/input_round_bg"
+            android:inputType="number"
+            android:maxLength="4"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/card_expiry_month_et"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/cvv_tv" />
+
+        <Spinner
+            android:id="@+id/state_spinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:dropDownVerticalOffset="40dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="25dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/state_tv" />
+
+        <Spinner
+            android:id="@+id/country_spinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:dropDownVerticalOffset="40dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="25dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/country_tv" />
+
+
+        <Spinner
+            android:id="@+id/credit_card_type_spinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:dropDownVerticalOffset="40dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="25dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/credit_card_type_tv" />
+
+        <Spinner
+            android:id="@+id/driver_license_state_spinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_round_bg"
+            android:dropDownVerticalOffset="40dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="25dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/driver_license_state_tv" />
+
+        <ImageView
+            android:id="@+id/spinner_arrow_state"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_down_arrow"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/state_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/state_spinner" />
+
+        <ImageView
+            android:id="@+id/spinner_arrow_county"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_down_arrow"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/country_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/country_spinner" />
+
+        <ImageView
+            android:id="@+id/spinner_arrow_license_state"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_down_arrow"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/driver_license_state_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/driver_license_state_spinner" />
+
+        <ImageView
+            android:id="@+id/spinner_arrow_credit_card_type"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_down_arrow"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/credit_card_type_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/credit_card_type_spinner" />
+
+        <TextView
+            android:id="@+id/basic_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Basic Info"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/driver_license_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Driver License"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/zipcode_et" />
+
+        <TextView
+            android:id="@+id/credit_card_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Credit Card"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/driver_license_state_spinner" />
+
+        <TextView
+            android:id="@+id/other_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Other"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/cvv_et" />
+
+        <ProgressBar
+            android:id="@+id/license_state_pb"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/driver_license_state_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/driver_license_state_spinner" />
+
+        <ProgressBar
+            android:id="@+id/card_type_pb"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/credit_card_type_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/credit_card_type_spinner" />
+
+        <ProgressBar
+            android:id="@+id/state_pb"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/state_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/state_spinner" />
+
+        <ProgressBar
+            android:id="@+id/country_pb"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/country_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/country_spinner" />
+
+        <ImageView
+            android:id="@+id/birthday_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_date"
+            android:tint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/birthday_tv"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/birthday_tv" />
+
+        <ImageView
+            android:id="@+id/license_expiry_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_date"
+            android:tint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/driver_license_expiry_tv"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/driver_license_expiry_tv" />
+
+        <ImageView
+            android:id="@+id/card_expiry_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_date"
+            android:tint="@color/colorAccent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/card_expiry_month_et"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintTop_toTopOf="@+id/card_expiry_month_et" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

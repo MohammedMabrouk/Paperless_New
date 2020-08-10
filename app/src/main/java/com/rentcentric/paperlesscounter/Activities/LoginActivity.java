@@ -1,5 +1,6 @@
 package com.rentcentric.paperlesscounter.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -30,32 +31,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         etMail = findViewById(R.id.Login_ET_Mail);
-
         etPassword = findViewById(R.id.Login_ET_Password);
-
         cbRememberMe = findViewById(R.id.Login_CB_RememberMe);
-
         btnLogin = findViewById(R.id.Login_BTN_Login);
         btnLogin.setOnClickListener(this);
 
         loginPreference = new LoginPreference(this);
 
-        if (loginPreference.getIsChecked()) {
-            etMail.setText(loginPreference.getMail());
-            etPassword.setText(loginPreference.getPassword());
-            cbRememberMe.setChecked(true);
-        }
+        if (!loginPreference.isSignedIn()) {
+            if (loginPreference.getRememberMe()) {
+                etMail.setText(loginPreference.getMail());
+                etPassword.setText(loginPreference.getPassword());
+                cbRememberMe.setChecked(true);
+            }
+            if (BuildConfig.DEBUG) {
+//                etMail.setText("RCQA125@rentcentric.com");
+//                etPassword.setText("3OmpYcx47q");
 
-        if (BuildConfig.DEBUG) {
-            etMail.setText("hsroahu@gmail.com");
-            etPassword.setText("oWq6wg5S");
+                // client 7081 - renty
+                etMail.setText("sean@renty.biz");
+                etPassword.setText("Tiq5pe");
+            }
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
             case R.id.Login_BTN_Login:
                 if (TextUtils.isEmpty(etMail.getText())) {
                     etMail.setError("Set E-Mail Address");
@@ -70,7 +76,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (cbRememberMe.isChecked()) {
                         loginPreference.setMail(etMail.getText().toString());
                         loginPreference.setPassword(etPassword.getText().toString());
-                        loginPreference.setIsChecked(true);
+                        loginPreference.setRememberMe(true);
+                    } else if (!cbRememberMe.isChecked()) {
+                        loginPreference.setRememberMe(false);
+                        loginPreference.setMail("");
+                        loginPreference.setPassword("");
                     }
 
                     new MobileUserLoginCallBack(this, new MobileUserLoginRequest(

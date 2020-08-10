@@ -14,6 +14,7 @@ import com.rentcentric.paperlesscounter.CallBacks.GetPaperLessCounterAdsCallBack
 import com.rentcentric.paperlesscounter.Models.Requests.GetPaperLessCounterAdsRequest;
 import com.rentcentric.paperlesscounter.Models.Responses.GetPaperLessCounterAdsResponse;
 import com.rentcentric.paperlesscounter.Network.RetrofitFactory;
+import com.rentcentric.paperlesscounter.Preferences.LoginPreference;
 import com.rentcentric.paperlesscounter.R;
 import com.rentcentric.paperlesscounter.Utility.SwipeGesture;
 import com.squareup.picasso.Picasso;
@@ -22,13 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdsActivity extends AppCompatActivity {
-
     TextView tvSwipeMessage;
     ImageView ivAdsImage;
 
     List<String> adsImages = new ArrayList<>();
     List<Integer> adsImagesDuration = new ArrayList<>();
     int i;
+    private LoginPreference loginPreference;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -63,9 +64,10 @@ public class AdsActivity extends AppCompatActivity {
 
         swipeMessageAnimation();
 
+        loginPreference = new LoginPreference(this);
         new GetPaperLessCounterAdsCallBack(this, new GetPaperLessCounterAdsRequest(
-                "Client" + RetrofitFactory.ClientID,
-                RetrofitFactory.WWW));
+                loginPreference.getClientId(),
+                loginPreference.getServerName()));
     }
 
     private void swipeMessageAnimation() {
@@ -78,10 +80,11 @@ public class AdsActivity extends AppCompatActivity {
     }
 
     public void onGetPaperLessCounterAdsCallBack(GetPaperLessCounterAdsResponse response) {
-        if (response.getPaperLessCounterAdsList() != null && response.getPaperLessCounterAdsList().size() > 0) {
-            for (int i = 0; i < response.getPaperLessCounterAdsList().size(); i++) {
-                adsImages.add(response.getPaperLessCounterAdsList().get(i).getPaperImage());
-                adsImagesDuration.add(response.getPaperLessCounterAdsList().get(i).getDuration());
+        if (response.getGetPaperLessCounterAdsResult().getPaperLessCounterAdsList() != null &&
+                response.getGetPaperLessCounterAdsResult().getPaperLessCounterAdsList().size() > 0) {
+            for (int i = 0; i < response.getGetPaperLessCounterAdsResult().getPaperLessCounterAdsList().size(); i++) {
+                adsImages.add(response.getGetPaperLessCounterAdsResult().getPaperLessCounterAdsList().get(i).getPaperImage());
+                adsImagesDuration.add(response.getGetPaperLessCounterAdsResult().getPaperLessCounterAdsList().get(i).getDuration());
             }
             Timer();
         }
@@ -92,12 +95,12 @@ public class AdsActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    for (i = 0; i <= adsImages.size(); i++) {
+                    for (i = 1; i <= adsImages.size(); i++) {
                         Thread.sleep(adsImagesDuration.get(i) * 1000);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Picasso.get().load(adsImages.get(i - 1)).into(ivAdsImage);
+                                Picasso.get().load(adsImages.get(i-1)).into(ivAdsImage);
                                 if (i == adsImages.size()) {
                                     Timer();
                                 }
