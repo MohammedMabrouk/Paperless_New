@@ -6,9 +6,10 @@ android {
         applicationId "com.rentcentric.paperlesscounter"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 9
-        versionName "1.9"
+        versionCode 10
+        versionName "2.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        setProperty("archivesBaseName", "Paperless_v" + versionName)
     }
     buildTypes {
         release {

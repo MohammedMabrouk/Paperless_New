@@ -45,12 +45,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 cbRememberMe.setChecked(true);
             }
             if (BuildConfig.DEBUG) {
-//                etMail.setText("RCQA125@rentcentric.com");
-//                etPassword.setText("3OmpYcx47q");
+                etMail.setText("RCQA125@rentcentric.com");
+                etPassword.setText("3OmpYcx47q");
 
                 // client 7081 - renty
-                etMail.setText("sean@renty.biz");
-                etPassword.setText("Tiq5pe");
+//                etMail.setText("sean@renty.biz");
+//                etPassword.setText("Tiq5pe");
             }
         } else {
             Intent intent = new Intent(this, MainActivity.class);

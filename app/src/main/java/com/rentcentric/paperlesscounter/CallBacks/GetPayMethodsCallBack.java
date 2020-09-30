@@ -42,7 +42,7 @@ public class GetPayMethodsCallBack implements Callback<GetPayMethodsResponse> {
                 Toast.makeText(fragment.getActivity(), response.body().getDescription(), Toast.LENGTH_LONG).show();
             }
         } else {
-            Extensions.Dialog(fragment.getActivity(), fragment.getActivity().getString(R.string.invalid_response) + " (GetStates API)");
+            Extensions.Dialog(fragment.getActivity(), fragment.getActivity().getString(R.string.invalid_response) + " (GetPayMethods API)");
         }
     }
 

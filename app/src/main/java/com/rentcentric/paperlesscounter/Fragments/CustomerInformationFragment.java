@@ -63,6 +63,13 @@ public class CustomerInformationFragment extends Fragment
     private int licenseExpiryDay, licenseExpiryMonth, licenseExpiryYear;
     private int cardExpiryDay, cardExpiryMonth, cardExpiryYear;
 
+    private boolean isEmailChanged = false,
+            isLicenseExpiryChanged = false,
+            isCCNumberChanged = false,
+            isCvvChanged = false;
+
+    private CustomerInfoResult customerInfoResult = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -263,6 +270,24 @@ public class CustomerInformationFragment extends Fragment
 
     private boolean validateInput() {
         // todo: handle update case
+        if(customerInfoResult != null){ // update case
+                if(!emailEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getEmail())){
+                    isEmailChanged = true;
+                }
+            if(!driverLicenseExpiryTv.getText().toString().equals(customerInfoResult.getCustomerInfo().getLicenseExpiry())){
+                isLicenseExpiryChanged = true;
+            }
+            if(!cvvEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getCvv())){
+                isCvvChanged = true;
+            }
+            if(customerInfoResult.getCustomerCreditCards() != null &&
+                    customerInfoResult.getCustomerCreditCards().get(0) != null &&
+                    !creditCardNumberEt.getText().toString().equals(customerInfoResult.getCustomerCreditCards().get(0).getCustomerCreditCardNumber())){
+                isCCNumberChanged = true;
+            }
+
+        }
+
         // validate
         boolean proceed = true;
         if (firstNameEt.getText().toString().isEmpty()) {
@@ -277,7 +302,9 @@ public class CustomerInformationFragment extends Fragment
             emailEt.setError(getActivity().getString(R.string.required));
             emailEt.requestFocus();
             proceed = false;
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailEt.getText().toString()).matches()) {
+        }
+        else if ((customerInfoResult == null || isEmailChanged) &&
+                !android.util.Patterns.EMAIL_ADDRESS.matcher(emailEt.getText().toString()).matches()) {
             emailEt.setError(getActivity().getString(R.string.invalid_email_address_error));
             emailEt.requestFocus();
             proceed = false;
@@ -311,11 +338,13 @@ public class CustomerInformationFragment extends Fragment
             licenseNumberEt.setError(getActivity().getString(R.string.required));
             licenseNumberEt.requestFocus();
             proceed = false;
-        } else if (driverLicenseExpiryTv.getText().toString().isEmpty()) {
+        }
+        else if (driverLicenseExpiryTv.getText().toString().isEmpty()) {
             driverLicenseExpiryTv.setError(getActivity().getString(R.string.required));
             driverLicenseExpiryTv.requestFocus();
             proceed = false;
-        } else if (payMethodList == null) {
+        }
+        else if (payMethodList == null) {
             proceed = false;
             Toast.makeText(getActivity(), "Select Card Type", Toast.LENGTH_SHORT).show();
         } else if (creditCardNumberEt.getText().toString().isEmpty()) {
@@ -369,19 +398,25 @@ public class CustomerInformationFragment extends Fragment
                                         Integer.parseInt(cardExpiryMonthEt.getText().toString()),
                                         Integer.parseInt(cardExpiryYearEt.getText().toString())
                                 ),
+                                companyNameEt.getText().toString(),
                                 companyPhoneEt.getText().toString(),
                                 insuranceCompanyEt.getText().toString(),
                                 policyNumberEt.getText().toString(),
                                 ssnEt.getText().toString(),
-                                ((CustomerInformationActivity) getActivity()).mobileRequestId
+                                ((CustomerInformationActivity) getActivity()).mobileRequestId,
+                                airportEt.getText().toString(),
+                                airlineEt.getText().toString(),
+                                flightNumberEt.getText().toString(),
+                                specialRequestEt.getText().toString()
                         ));
             } else {
                 // update customer
                 new UpdateCustomerCallBack(this,
                         new UpdateCustomerRequest(
+                                customerInfoResult.getCustomerInfo().getCustomerId(),
                                 firstNameEt.getText().toString(),
                                 lastNameEt.getText().toString(),
-                                emailEt.getText().toString(),
+                                isEmailChanged? emailEt.getText().toString() : null,
                                 phoneEt.getText().toString(),
                                 birthdayTv.getText().toString(),
                                 addressEt.getText().toString(),
@@ -390,12 +425,17 @@ public class CustomerInformationFragment extends Fragment
                                 countryList.get(countrySpinner.getSelectedItemPosition()).getCountryCode(),
                                 zipCodeEt.getText().toString(),
                                 licenseNumberEt.getText().toString(),
-                                driverLicenseExpiryTv.getText().toString(),
+                                isLicenseExpiryChanged ? driverLicenseExpiryTv.getText().toString() : null,
                                 stateList.get(driverLicenseStateSpinner.getSelectedItemPosition()).getStateCode(),
+                                companyNameEt.getText().toString(),
                                 companyPhoneEt.getText().toString(),
                                 insuranceCompanyEt.getText().toString(),
                                 policyNumberEt.getText().toString(),
-                                ssnEt.getText().toString()
+                                ssnEt.getText().toString(),
+                                airportEt.getText().toString(),
+                                airlineEt.getText().toString(),
+                                flightNumberEt.getText().toString(),
+                                specialRequestEt.getText().toString()
                         ));
             }
         }
@@ -481,7 +521,14 @@ public class CustomerInformationFragment extends Fragment
         Toast.makeText(getActivity(), "Customer Added Successfully!", Toast.LENGTH_SHORT).show();
     }
 
+    public void onUpdateCustomerSuccess() {
+        progressDialog.dismiss();
+        getActivity().finish();
+        Toast.makeText(getActivity(), "Customer Updated Successfully!", Toast.LENGTH_SHORT).show();
+    }
+
     public void onGetCustomerInfoSuccess(CustomerInfoResult customerInfoResult) {
+        this.customerInfoResult = customerInfoResult;
         progressDialog.dismiss();
         // bind data
         firstNameEt.setText(customerInfoResult.getCustomerInfo().getFirstName());
@@ -508,9 +555,9 @@ public class CustomerInformationFragment extends Fragment
         driverLicenseExpiryTv.setText(customerInfoResult.getCustomerInfo().getLicenseExpiry());
 
         // select the default cc
-        if(customerInfoResult.getCustomerCreditCards() != null){
-            for(CustomerCreditCard cc : customerInfoResult.getCustomerCreditCards()){
-                if(cc.getIsDefault()){
+        if (customerInfoResult.getCustomerCreditCards() != null) {
+            for (CustomerCreditCard cc : customerInfoResult.getCustomerCreditCards()) {
+                if (cc.getIsDefault()) {
                     new GetPayMethodsCallBack(this, cc.getPayMethod());
                     creditCardHolderEt.setText(cc.getCardHolder());
                     creditCardNumberEt.setText(cc.getCustomerCreditCardNumber());
@@ -520,8 +567,9 @@ public class CustomerInformationFragment extends Fragment
                     break;
                 }
             }
+        } else {
+            new GetPayMethodsCallBack(this, null);
         }
-
 
 
 //        creditCardTypeSpinner.setEnabled(false);
@@ -538,8 +586,9 @@ public class CustomerInformationFragment extends Fragment
         insuranceCompanyEt.setText(customerInfoResult.getCustomerInfo().getInsuranceCompany());
         policyNumberEt.setText(customerInfoResult.getCustomerInfo().getPolicyNumber());
         ssnEt.setText(customerInfoResult.getCustomerInfo().getSSN());
-//        airportEt.setText(customerInfoResult.getCustomerInfo().air());
-//        airlineEt.setText(customerInfoResult.getCustomerInfo().air());
-//        flightNumberEt.setText(customerInfoResult.getCustomerInfo().fl());
+        airportEt.setText(customerInfoResult.getCustomerInfo().getAirport());
+        airlineEt.setText(customerInfoResult.getCustomerInfo().getAirline());
+        flightNumberEt.setText(customerInfoResult.getCustomerInfo().getFlightNumber());
+        specialRequestEt.setText(customerInfoResult.getCustomerInfo().getLocalInformation());
     }
 }

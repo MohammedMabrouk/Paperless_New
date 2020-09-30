@@ -34,7 +34,7 @@ public class UpdateCustomerCallBack implements Callback<UpdateCustomerResponse> 
     public void onResponse(Call<UpdateCustomerResponse> call, Response<UpdateCustomerResponse> response) {
         if (response.isSuccessful()) {
             if (response.body() != null && response.body().getState() != null && response.body().getState().equals(true)) {
-                customerInformationFragment.onAddCustomerSuccess();
+                customerInformationFragment.onUpdateCustomerSuccess();
             } else {
                 customerInformationFragment.progressDialog.dismiss();
                 Extensions.Dialog(customerInformationFragment.getActivity(), response.body().getDescription());
