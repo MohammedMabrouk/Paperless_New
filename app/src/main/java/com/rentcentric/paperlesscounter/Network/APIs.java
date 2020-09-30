@@ -68,7 +68,7 @@ public interface APIs {
 
 
     // customer
-    @POST("Customer/CustomerRegistration")
+    @POST("Customer/AddNewCustomer")
     Call<AddNewCustomerResponse> addNewCustomer(@Body AddNewCustomerRequest request);
 
     @POST("Customer/UpdateCustomer")
