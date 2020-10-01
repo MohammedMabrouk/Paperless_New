@@ -65,6 +65,9 @@ public class CustomerInformationFragment extends Fragment
 
     private boolean isEmailChanged = false,
             isLicenseExpiryChanged = false,
+            isLicenseNumberChanged = false,
+            isPhoneChanged = false,
+            isSSNChanged = false,
             isCCNumberChanged = false,
             isCvvChanged = false;
 
@@ -270,20 +273,30 @@ public class CustomerInformationFragment extends Fragment
 
     private boolean validateInput() {
         // todo: handle update case
-        if(customerInfoResult != null){ // update case
-                if(!emailEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getEmail())){
-                    isEmailChanged = true;
-                }
-            if(!driverLicenseExpiryTv.getText().toString().equals(customerInfoResult.getCustomerInfo().getLicenseExpiry())){
+        if (customerInfoResult != null) { // update case
+            if (!emailEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getEmail())) {
+                isEmailChanged = true;
+            }
+            if (!driverLicenseExpiryTv.getText().toString().equals(customerInfoResult.getCustomerInfo().getLicenseExpiry())) {
                 isLicenseExpiryChanged = true;
             }
-            if(!cvvEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getCvv())){
+            if (!cvvEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getCvv())) {
                 isCvvChanged = true;
             }
-            if(customerInfoResult.getCustomerCreditCards() != null &&
+            if (customerInfoResult.getCustomerCreditCards() != null &&
                     customerInfoResult.getCustomerCreditCards().get(0) != null &&
-                    !creditCardNumberEt.getText().toString().equals(customerInfoResult.getCustomerCreditCards().get(0).getCustomerCreditCardNumber())){
+                    !creditCardNumberEt.getText().toString().equals(customerInfoResult.getCustomerCreditCards().get(0).getCustomerCreditCardNumber())) {
                 isCCNumberChanged = true;
+            }
+
+            if(!ssnEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getSSN())){
+                isSSNChanged = true;
+            }
+            if(!phoneEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getPhone())){
+                isPhoneChanged = true;
+            }
+            if(!licenseNumberEt.getText().toString().equals(customerInfoResult.getCustomerInfo().getLicenseNumber())){
+                isLicenseNumberChanged = true;
             }
 
         }
@@ -302,8 +315,7 @@ public class CustomerInformationFragment extends Fragment
             emailEt.setError(getActivity().getString(R.string.required));
             emailEt.requestFocus();
             proceed = false;
-        }
-        else if ((customerInfoResult == null || isEmailChanged) &&
+        } else if ((customerInfoResult == null || isEmailChanged) &&
                 !android.util.Patterns.EMAIL_ADDRESS.matcher(emailEt.getText().toString()).matches()) {
             emailEt.setError(getActivity().getString(R.string.invalid_email_address_error));
             emailEt.requestFocus();
@@ -338,13 +350,11 @@ public class CustomerInformationFragment extends Fragment
             licenseNumberEt.setError(getActivity().getString(R.string.required));
             licenseNumberEt.requestFocus();
             proceed = false;
-        }
-        else if (driverLicenseExpiryTv.getText().toString().isEmpty()) {
+        } else if (driverLicenseExpiryTv.getText().toString().isEmpty()) {
             driverLicenseExpiryTv.setError(getActivity().getString(R.string.required));
             driverLicenseExpiryTv.requestFocus();
             proceed = false;
-        }
-        else if (payMethodList == null) {
+        } else if (payMethodList == null) {
             proceed = false;
             Toast.makeText(getActivity(), "Select Card Type", Toast.LENGTH_SHORT).show();
         } else if (creditCardNumberEt.getText().toString().isEmpty()) {
@@ -413,25 +423,26 @@ public class CustomerInformationFragment extends Fragment
                 // update customer
                 new UpdateCustomerCallBack(this,
                         new UpdateCustomerRequest(
+                                ((CustomerInformationActivity) getActivity()).mobileRequestId,
                                 customerInfoResult.getCustomerInfo().getCustomerId(),
                                 firstNameEt.getText().toString(),
                                 lastNameEt.getText().toString(),
-                                isEmailChanged? emailEt.getText().toString() : null,
-                                phoneEt.getText().toString(),
+                                isEmailChanged ? emailEt.getText().toString() : null,
+                                isPhoneChanged ? phoneEt.getText().toString() : null,
                                 birthdayTv.getText().toString(),
                                 addressEt.getText().toString(),
                                 cityEt.getText().toString(),
                                 stateList.get(stateSpinner.getSelectedItemPosition()).getStateCode(),
                                 countryList.get(countrySpinner.getSelectedItemPosition()).getCountryCode(),
                                 zipCodeEt.getText().toString(),
-                                licenseNumberEt.getText().toString(),
+                                isLicenseNumberChanged? licenseNumberEt.getText().toString() : null,
                                 isLicenseExpiryChanged ? driverLicenseExpiryTv.getText().toString() : null,
                                 stateList.get(driverLicenseStateSpinner.getSelectedItemPosition()).getStateCode(),
                                 companyNameEt.getText().toString(),
                                 companyPhoneEt.getText().toString(),
                                 insuranceCompanyEt.getText().toString(),
                                 policyNumberEt.getText().toString(),
-                                ssnEt.getText().toString(),
+                                isSSNChanged? ssnEt.getText().toString() : null,
                                 airportEt.getText().toString(),
                                 airlineEt.getText().toString(),
                                 flightNumberEt.getText().toString(),

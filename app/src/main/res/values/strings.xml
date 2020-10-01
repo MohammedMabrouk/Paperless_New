@@ -11,4 +11,8 @@
     <string name="required">required</string>
     <string name="invalid_email_address_error">Invalid email address</string>
     <string name="loading_txt">loading...</string>
+    <string name="network_error">Network error. Please check your connection.</string>
+    <string name="you_are_not_updated_title">Update Available</string>
+    <string name="app_update_message">A new version of Mobile Agent is available. Please update to version %1$s now.</string>
+    <string name="update">update</string>
 </resources>

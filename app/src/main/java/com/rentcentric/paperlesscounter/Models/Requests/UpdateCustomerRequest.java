@@ -198,6 +198,9 @@ public class UpdateCustomerRequest {
     @SerializedName("localInformation")
     @Expose
     private String localInformation;
+    @SerializedName("MobileRequestId")
+    @Expose
+    private int mobileRequestId;
 
     public UpdateCustomerRequest(Integer customerId,
                                  String firstName,
@@ -219,48 +222,51 @@ public class UpdateCustomerRequest {
         this.birthday = birthday;
     }
 
-    public UpdateCustomerRequest(int customerId,
-                                 String firstName,
-                                 String lastName,
-                                 String email,
-                                 String phone,
-                                 String birthday,
-                                 String address,
-                                 String city,
-                                 String stateCode,
-                                 String countryCode,
-                                 String zip,
-                                 String licenseNumber,
-                                 String licenseExpiry,
-                                 String licenseState,
-                                 String companyName,
-                                 String companyPhone,
-                                 String insuranceCompany,
-                                 String policyNumber,
-                                 String sSN,
-                                 String airport,
-                                 String airline,
-                                 String flightNumber,
-                                 String localInformation) {
+    public UpdateCustomerRequest(
+            int mobileRequestId,
+            int customerId,
+            String firstName,
+            String lastName,
+            String email,
+            String phone,
+            String birthday,
+            String address,
+            String city,
+            String stateCode,
+            String countryCode,
+            String zip,
+            String licenseNumber,
+            String licenseExpiry,
+            String licenseState,
+            String companyName,
+            String companyPhone,
+            String insuranceCompany,
+            String policyNumber,
+            String sSN,
+            String airport,
+            String airline,
+            String flightNumber,
+            String localInformation) {
+        this.mobileRequestId = mobileRequestId;
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         if (email != null) this.email = email;
-        this.phone = phone;
+        if (phone != null) this.phone = phone;
         this.birthday = birthday;
         this.address = address;
         this.city = city;
         this.stateCode = stateCode;
         this.countryCode = countryCode;
         this.zip = zip;
-        this.licenseNumber = licenseNumber;
+        if (licenseNumber != null) this.licenseNumber = licenseNumber;
         if (licenseExpiry != null) this.licenseExpiry = licenseExpiry;
         this.licenseState = licenseState;
         this.companyPhone = companyPhone;
         this.companyName = companyName;
         this.insuranceCompany = insuranceCompany;
         this.policyNumber = policyNumber;
-        this.sSN = sSN;
+        if (sSN != null) this.sSN = sSN;
         this.airport = airport;
         this.flightNumber = flightNumber;
         this.airline = airline;

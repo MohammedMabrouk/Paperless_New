@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnSubmit.setOnClickListener(this);
 
         tvNavFullName.setText(loginPreference.getFullName());
-        tvNavVersion.setText("Version " + BuildConfig.VERSION_NAME);
+        tvNavVersion.setText("version:" + BuildConfig.VERSION_NAME);
     }
 
     @Override

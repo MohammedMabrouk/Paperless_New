@@ -168,7 +168,8 @@ public class AddNewCustomerRequest {
         this.companyId = companyId;
     }
 
-    public AddNewCustomerRequest(String firstName,
+    public AddNewCustomerRequest(
+            String firstName,
                                  String lastName,
                                  String email,
                                  String phone,

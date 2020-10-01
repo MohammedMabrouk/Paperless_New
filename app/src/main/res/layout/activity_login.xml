@@ -69,6 +69,18 @@
             app:cb_color="@color/colorWhite"
             app:cb_pressedRingWidth="5dip" />
 
+
+
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp" />
 </RelativeLayout>
