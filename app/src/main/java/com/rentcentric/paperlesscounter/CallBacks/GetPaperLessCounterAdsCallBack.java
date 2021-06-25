@@ -1,7 +1,8 @@
 package com.rentcentric.paperlesscounter.CallBacks;
 
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rentcentric.paperlesscounter.Activities.AdsActivity;
 import com.rentcentric.paperlesscounter.Models.Requests.GetPaperLessCounterAdsRequest;

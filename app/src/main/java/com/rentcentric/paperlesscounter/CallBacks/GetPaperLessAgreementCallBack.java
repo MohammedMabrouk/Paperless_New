@@ -1,6 +1,6 @@
 package com.rentcentric.paperlesscounter.CallBacks;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rentcentric.paperlesscounter.Activities.MainActivity;
 import com.rentcentric.paperlesscounter.Models.Requests.GetPaperLessAgreementRequest;
@@ -14,7 +14,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class GetPaperLessAgreementCallBack implements Callback<GetPaperLessAgreementResponse> {
-
     private AppCompatActivity context;
     private LoginPreference loginPreference;
 
@@ -31,11 +30,12 @@ public class GetPaperLessAgreementCallBack implements Callback<GetPaperLessAgree
     @Override
     public void onResponse(Call<GetPaperLessAgreementResponse> call, Response<GetPaperLessAgreementResponse> response) {
         if (response.isSuccessful()) {
-            if (response.body() != null && response.body().getState()) {
+            if (response.body() != null) {
                 ((MainActivity) context).onGetPaperLessAgreementCallBack(response.body());
-            } else {
-                ((MainActivity) context).onGetCallBackError(response.body().getDescription());
             }
+//            else {
+//                ((MainActivity) context).onGetCallBackError(response.body().getDescription());
+//            }
         } else {
             ((MainActivity) context).onGetCallBackError(context.getString(R.string.invalid_response) + " (PaperLessAgreement API)");
         }

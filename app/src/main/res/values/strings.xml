@@ -11,8 +11,23 @@
     <string name="required">required</string>
     <string name="invalid_email_address_error">Invalid email address</string>
     <string name="loading_txt">loading...</string>
-    <string name="network_error">Network error. Please check your connection.</string>
+
+    <string name="disclaimer">Disclaimer</string>
+    <string name="you_should_sign_all_items">You should sign all items.</string>
+    <string name="you_should_submit_your_signature">You should save your signatures.</string>
+    <string name="continueBTN">Continue</string>
+    <string name="please_sign_your_name">Please sign your name</string>
+    <string name="clear">clear</string>
+    <string name="include_your_credentials">Include your credentials</string>
+    <string name="charges_summary">Charges Summary</string>
+    <string name="retry">Retry</string>
+
+    <!-- version checking -->
     <string name="you_are_not_updated_title">Update Available</string>
-    <string name="app_update_message">A new version of Mobile Agent is available. Please update to version %1$s now.</string>
+    <string name="app_update_message">A new version of Paperless is available. Please update to version %1$s now.</string>
+    <string name="update_app">Update</string>
     <string name="update">update</string>
+
+    <string name="network_error">Network error. Please check your connection.</string>
+
 </resources>

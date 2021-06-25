@@ -33,24 +33,24 @@ public class RetrofitFactory {
                 .create(APIs.class);
     }
 
-    public static APIs getOldClientService(String serverName, String clientId) {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        if(BuildConfig.DEBUG) interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        else interceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
-
-        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(600000, TimeUnit.SECONDS)
-                .connectTimeout(600000, TimeUnit.SECONDS)
-                .addInterceptor(interceptor)
-                .build();
-
-        return new Retrofit.Builder()
-                .baseUrl("https://" + serverName + ".rentcentric.com/Client" + clientId + "/mobileservice.svc/")
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(APIs.class);
-    }
+//    public static APIs getOldClientService(String serverName, String clientId) {
+//        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//        if(BuildConfig.DEBUG) interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        else interceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
+//
+//        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .readTimeout(600000, TimeUnit.SECONDS)
+//                .connectTimeout(600000, TimeUnit.SECONDS)
+//                .addInterceptor(interceptor)
+//                .build();
+//
+//        return new Retrofit.Builder()
+//                .baseUrl("https://" + serverName + ".rentcentric.com/Client" + clientId + "/mobileservice.svc/")
+//                .client(okHttpClient)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+//                .create(APIs.class);
+//    }
 
     public static APIs getClientService(String serverName, String clientId, String token) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -66,6 +66,9 @@ public class RetrofitFactory {
                     public Response intercept(Chain chain) throws IOException {
                         Request request = chain.request().newBuilder()
                                 .addHeader("Authorization", token)
+                                .addHeader("AppName", "Paperless")
+                                .addHeader("Platform", "Android")
+                                .addHeader("AppVersion", BuildConfig.VERSION_NAME)
                                 .build();
                         return chain.proceed(request);
                     }

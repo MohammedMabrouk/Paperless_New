@@ -365,13 +365,21 @@ public class CustomerInformationFragment extends Fragment
             creditCardHolderEt.setError(getActivity().getString(R.string.required));
             creditCardHolderEt.requestFocus();
             proceed = false;
-        } else if (cvvEt.getText().toString().isEmpty()) {
-            cvvEt.setError(getActivity().getString(R.string.required));
-            cvvEt.requestFocus();
-            proceed = false;
-        } else if (cardExpiryMonthEt.getText().toString().isEmpty()) {
+        }
+//        else if (cvvEt.getText().toString().isEmpty()) {
+//            cvvEt.setError(getActivity().getString(R.string.required));
+//            cvvEt.requestFocus();
+//            proceed = false;
+//        }
+        else if (cardExpiryMonthEt.getText().toString().isEmpty()) {
             cardExpiryMonthEt.setError(getActivity().getString(R.string.required));
             cardExpiryMonthEt.requestFocus();
+            proceed = false;
+        }
+
+        else if (cardExpiryYearEt.getText().toString().isEmpty()) {
+            cardExpiryYearEt.setError(getActivity().getString(R.string.required));
+            cardExpiryYearEt.requestFocus();
             proceed = false;
         }
 
@@ -423,7 +431,6 @@ public class CustomerInformationFragment extends Fragment
                 // update customer
                 new UpdateCustomerCallBack(this,
                         new UpdateCustomerRequest(
-                                ((CustomerInformationActivity) getActivity()).mobileRequestId,
                                 customerInfoResult.getCustomerInfo().getCustomerId(),
                                 firstNameEt.getText().toString(),
                                 lastNameEt.getText().toString(),
@@ -446,7 +453,8 @@ public class CustomerInformationFragment extends Fragment
                                 airportEt.getText().toString(),
                                 airlineEt.getText().toString(),
                                 flightNumberEt.getText().toString(),
-                                specialRequestEt.getText().toString()
+                                specialRequestEt.getText().toString(),
+                                ((CustomerInformationActivity) getActivity()).mobileRequestId
                         ));
             }
         }

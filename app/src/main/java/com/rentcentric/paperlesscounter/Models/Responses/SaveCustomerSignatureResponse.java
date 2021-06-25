@@ -4,16 +4,37 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class SaveCustomerSignatureResponse {
-
-    @SerializedName("StatusInfo")
+    @SerializedName("Description")
     @Expose
-    private StatusInfo statusInfo;
+    private String description;
+    @SerializedName("State")
+    @Expose
+    private Boolean state;
+    @SerializedName("ExceptionMessage")
+    @Expose
+    private String exceptionMessage;
 
-    public StatusInfo getStatusInfo() {
-        return statusInfo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setStatusInfo(StatusInfo statusInfo) {
-        this.statusInfo = statusInfo;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
+    public String getExceptionMessage() {
+        return exceptionMessage;
+    }
+
+    public void setExceptionMessage(String exceptionMessage) {
+        this.exceptionMessage = exceptionMessage;
     }
 }

@@ -1,8 +1,9 @@
 package com.rentcentric.paperlesscounter.CallBacks;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rentcentric.paperlesscounter.Activities.MainActivity;
 import com.rentcentric.paperlesscounter.Preferences.LoginPreference;
@@ -26,20 +27,24 @@ public class SaveCustomerSignatureCallBack implements Callback<SaveCustomerSigna
         this.context = context;
         progressDialog = ProgressDialog.show(context, "", context.getString(R.string.loading));
         loginPreference = new LoginPreference(context);
-        RetrofitFactory.getOldClientService(loginPreference.getServerName(), loginPreference.getClientId()).saveCustomerSignature(request).enqueue(this);
+        RetrofitFactory.getClientService(
+                loginPreference.getServerName(),
+                loginPreference.getClientId(),
+                loginPreference.getToken()
+        ).saveCustomerSignature(request).enqueue(this);
     }
 
     @Override
     public void onResponse(Call<SaveCustomerSignatureResponse> call, Response<SaveCustomerSignatureResponse> response) {
         progressDialog.dismiss();
         if (response.isSuccessful()) {
-            if (response.body().getStatusInfo().getStatusCode().equals("0")) {
+            if (response.body() != null && response.body().getState()) {
                 ((MainActivity) context).onSaveCustomerSignatureCallBack();
             } else {
-                Extensions.Dialog(context, response.body().getStatusInfo().getDescription());
+                Extensions.Dialog(context, response.body().getDescription());
             }
         } else {
-            Extensions.Dialog(context, context.getString(R.string.invalid_response) + " (SaveCustomerSignature API)");
+            Extensions.Dialog(context, context.getString(R.string.invalid_response) + " (PaperLessSaveCustomerSignature API)");
         }
     }
 

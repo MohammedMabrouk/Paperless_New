@@ -1,6 +1,7 @@
 package com.rentcentric.paperlesscounter.CallBacks;
+import android.widget.Toast;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rentcentric.paperlesscounter.Activities.MainActivity;
 import com.rentcentric.paperlesscounter.Models.Requests.GetMobileRequestsRequest;
@@ -35,7 +36,12 @@ public class GetMobileRequestsCallBack implements Callback<GetMobileRequestsResp
             } else {
                 ((MainActivity) context).onGetCallBackError(response.body().getDescription());
             }
-        } else {
+        }
+        else if(response.code() == 401){
+//            Toast.makeText(context, "Your Activation Code is Not Valid.", Toast.LENGTH_LONG).show();
+            ((MainActivity) context).sessionExpiredLogout();
+        }
+        else {
             ((MainActivity) context).onGetCallBackError((R.string.invalid_response) + " (GetMobileRequests API)");
         }
     }

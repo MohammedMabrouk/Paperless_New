@@ -2,7 +2,6 @@ package com.rentcentric.paperlesscounter.Activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -10,10 +9,11 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.rentcentric.paperlesscounter.CallBacks.GetPaperLessCounterAdsCallBack;
 import com.rentcentric.paperlesscounter.Models.Requests.GetPaperLessCounterAdsRequest;
 import com.rentcentric.paperlesscounter.Models.Responses.GetPaperLessCounterAdsResponse;
-import com.rentcentric.paperlesscounter.Network.RetrofitFactory;
 import com.rentcentric.paperlesscounter.Preferences.LoginPreference;
 import com.rentcentric.paperlesscounter.R;
 import com.rentcentric.paperlesscounter.Utility.SwipeGesture;
@@ -95,12 +95,14 @@ public class AdsActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    for (i = 1; i <= adsImages.size(); i++) {
+                    for (i = 0; i <= adsImages.size(); i++) {
                         Thread.sleep(adsImagesDuration.get(i) * 1000);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Picasso.get().load(adsImages.get(i-1)).into(ivAdsImage);
+                                if(i - 1 >= 0)
+                                Picasso.get().load(adsImages.get(i - 1)).into(ivAdsImage);
+
                                 if (i == adsImages.size()) {
                                     Timer();
                                 }
@@ -114,4 +116,11 @@ public class AdsActivity extends AppCompatActivity {
         };
         t.start();
     }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        i = 0;
+//    }
 }

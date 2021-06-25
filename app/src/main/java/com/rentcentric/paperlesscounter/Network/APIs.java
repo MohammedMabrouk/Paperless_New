@@ -4,10 +4,14 @@ import com.rentcentric.paperlesscounter.Models.Requests.AddNewCustomerRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.GetMobileRequestsRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.GetPaperLessAgreementRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.GetPaperLessCounterAdsRequest;
+import com.rentcentric.paperlesscounter.Models.Requests.GetPaperLessTempChargeSummeryRequest;
+import com.rentcentric.paperlesscounter.Models.Requests.GetSignatureSetupsRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.MobileUserLoginRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.PaperLessAdminLogOutRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.PaperLessAdminLoginRequest;
+import com.rentcentric.paperlesscounter.Models.Requests.PaperLessSaveCustomerCheckInSignatureRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.SaveCustomerSignatureRequest;
+import com.rentcentric.paperlesscounter.Models.Requests.SaveSignatureRequest;
 import com.rentcentric.paperlesscounter.Models.Requests.UpdateCustomerRequest;
 import com.rentcentric.paperlesscounter.Models.Responses.AddNewCustomerResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.GetCountriesResponse;
@@ -15,12 +19,16 @@ import com.rentcentric.paperlesscounter.Models.Responses.GetCustomerInfoResponse
 import com.rentcentric.paperlesscounter.Models.Responses.GetMobileRequestsResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.GetPaperLessAgreementResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.GetPaperLessCounterAdsResponse;
+import com.rentcentric.paperlesscounter.Models.Responses.GetPaperLessTempChargeSummeryResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.GetPayMethodsResponse;
+import com.rentcentric.paperlesscounter.Models.Responses.GetSignatureSetupsResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.GetStatesResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.MobileUserLoginResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.PaperLessAdminLogOutResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.PaperLessAdminLoginResponse;
+import com.rentcentric.paperlesscounter.Models.Responses.PaperLessSaveCustomerCheckInSignatureResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.SaveCustomerSignatureResponse;
+import com.rentcentric.paperlesscounter.Models.Responses.SaveSignatureResponse;
 import com.rentcentric.paperlesscounter.Models.Responses.UpdateCustomerResponse;
 
 import retrofit2.Call;
@@ -42,20 +50,18 @@ public interface APIs {
     @POST("PaperLess/PaperLessAdminLogOut")
     Call<PaperLessAdminLogOutResponse> paperLessAdminLogOut(@Body PaperLessAdminLogOutRequest paperLessAdminLogOutRequest);
 
-
     // get requests
     @POST("PaperLess/GetMobileRequests")
     Call<GetMobileRequestsResponse> getMobileRequests(@Body GetMobileRequestsRequest getMobileRequestsRequest);
 
-
     @POST("PaperLess/PaperLessAgreement")
     Call<GetPaperLessAgreementResponse> getPaperLessAgreement(@Body GetPaperLessAgreementRequest getPaperLessAgreementRequest);
 
-    @POST("SaveCustomerSignature")
-    Call<SaveCustomerSignatureResponse> saveCustomerSignature(@Body SaveCustomerSignatureRequest saveCustomerSignatureRequest);
-
     @POST("PaperLess/GetPaperLessCounterAds")
     Call<GetPaperLessCounterAdsResponse> getPaperLessCounterAds(@Body GetPaperLessCounterAdsRequest getPaperLessCounterAdsRequest);
+
+    @POST("PaperLess/GetPaperLessTempChargeSummery")
+    Call<GetPaperLessTempChargeSummeryResponse> getPaperLessTempChargeSummery(@Body GetPaperLessTempChargeSummeryRequest getPaperLessTempChargeSummeryRequest);
 
     @GET("Setting/GetStates")
     Call<GetStatesResponse> getStates();
@@ -65,7 +71,6 @@ public interface APIs {
 
     @GET("Setting/GetPayMethods")
     Call<GetPayMethodsResponse> getPayMethods();
-
 
     // customer
     @POST("Customer/AddNewCustomer")
@@ -77,4 +82,16 @@ public interface APIs {
     @GET("Customer/GetCustomer")
     Call<GetCustomerInfoResponse> getCustomerInformation(@Query("customerId") String customerId);
 
+    @POST("PaperLess/PaperLessSaveCustomerSignature")
+    Call<SaveCustomerSignatureResponse> saveCustomerSignature(@Body SaveCustomerSignatureRequest saveCustomerSignatureRequest);
+
+    @POST("PaperLess/PaperLessSaveCustomerCheckInSignature")
+    Call<PaperLessSaveCustomerCheckInSignatureResponse> saveCustomerSignatureForCheckIn(@Body PaperLessSaveCustomerCheckInSignatureRequest saveCustomerSignatureRequest);
+
+    // Signature setups
+    @POST("Damage/GetSignatureSetups")
+    Call<GetSignatureSetupsResponse> getSignatureSetups(@Body GetSignatureSetupsRequest getSignatureSetupsRequest);
+
+    @POST("PaperLess/PaperLessSaveSignatures")
+    Call<SaveSignatureResponse> saveSignatureSetups(@Body SaveSignatureRequest saveSignatureRequest);
 }

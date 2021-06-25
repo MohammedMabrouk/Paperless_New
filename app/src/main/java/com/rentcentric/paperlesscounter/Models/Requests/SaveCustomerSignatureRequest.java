@@ -10,30 +10,43 @@ public class SaveCustomerSignatureRequest {
     private String adminId;
     @SerializedName("AgreementId")
     @Expose
-    private String agreementId;
+    private Integer agreementId;
     @SerializedName("AgreementSignId")
     @Expose
-    private String agreementSignId;
+    private Integer agreementSignId;
     @SerializedName("AgreementUrl")
     @Expose
     private String agreementUrl;
     @SerializedName("LocationId")
     @Expose
-    private String locationId;
+    private Integer locationId;
     @SerializedName("PaperLessAdminLoginId")
     @Expose
-    private String paperLessAdminLoginId;
-    @SerializedName("SignautreImage")
+    private Integer paperLessAdminLoginId;
+    @SerializedName("SignatureImage")
     @Expose
     private String signautreImage;
+    @SerializedName("MobileRequestId")
+    @Expose
+    private Integer mobileRequestId;
 
-    public SaveCustomerSignatureRequest(String adminId, String agreementId, String agreementSignId, String locationId, String paperLessAdminLoginId, String signautreImage) {
+    public SaveCustomerSignatureRequest(
+            String adminId,
+            Integer agreementId,
+            Integer agreementSignId,
+            Integer locationId,
+            Integer paperLessAdminLoginId,
+            String signautreImage,
+            Integer mobileRequestId,
+            String agreementUrl) {
         this.adminId = adminId;
         this.agreementId = agreementId;
         this.agreementSignId = agreementSignId;
         this.locationId = locationId;
         this.paperLessAdminLoginId = paperLessAdminLoginId;
         this.signautreImage = signautreImage;
+        this.mobileRequestId = mobileRequestId;
+        this.agreementUrl = agreementUrl;
     }
 
     public String getAdminId() {
@@ -44,19 +57,19 @@ public class SaveCustomerSignatureRequest {
         this.adminId = adminId;
     }
 
-    public String getAgreementId() {
+    public Integer getAgreementId() {
         return agreementId;
     }
 
-    public void setAgreementId(String agreementId) {
+    public void setAgreementId(Integer agreementId) {
         this.agreementId = agreementId;
     }
 
-    public String getAgreementSignId() {
+    public Integer getAgreementSignId() {
         return agreementSignId;
     }
 
-    public void setAgreementSignId(String agreementSignId) {
+    public void setAgreementSignId(Integer agreementSignId) {
         this.agreementSignId = agreementSignId;
     }
 
@@ -68,19 +81,19 @@ public class SaveCustomerSignatureRequest {
         this.agreementUrl = agreementUrl;
     }
 
-    public String getLocationId() {
+    public Integer getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(String locationId) {
+    public void setLocationId(Integer locationId) {
         this.locationId = locationId;
     }
 
-    public String getPaperLessAdminLoginId() {
+    public Integer getPaperLessAdminLoginId() {
         return paperLessAdminLoginId;
     }
 
-    public void setPaperLessAdminLoginId(String paperLessAdminLoginId) {
+    public void setPaperLessAdminLoginId(Integer paperLessAdminLoginId) {
         this.paperLessAdminLoginId = paperLessAdminLoginId;
     }
 
@@ -90,5 +103,13 @@ public class SaveCustomerSignatureRequest {
 
     public void setSignautreImage(String signautreImage) {
         this.signautreImage = signautreImage;
+    }
+
+    public Integer getMobileRequestId() {
+        return mobileRequestId;
+    }
+
+    public void setMobileRequestId(Integer mobileRequestId) {
+        this.mobileRequestId = mobileRequestId;
     }
 }

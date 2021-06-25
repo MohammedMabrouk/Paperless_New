@@ -18,11 +18,14 @@ public class GetPaperLessAgreementRequest {
     @Expose
     private Integer mobileRequestId;
 
-    public GetPaperLessAgreementRequest(Integer paperLessAdminLoginId, String adminId, Integer locationId, Integer mobileRequestId) {
+    public GetPaperLessAgreementRequest(
+            Integer paperLessAdminLoginId,
+            String adminId,
+            Integer locationId) {
         this.paperLessAdminLoginId = paperLessAdminLoginId;
         this.adminId = adminId;
         this.locationId = locationId;
-        this.mobileRequestId = mobileRequestId;
+//        this.mobileRequestId = mobileRequestId;
     }
 
     public Integer getPaperLessAdminLoginId() {

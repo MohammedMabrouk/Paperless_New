@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="default_card_elevation">4dp</dimen>
+    <dimen name="activity_splash_logo_margin">30dp</dimen>
+    <dimen name="activity_splash_login_retry_width_height">50dp</dimen>
+    <dimen name="dp6">6dp</dimen>
+</resources>

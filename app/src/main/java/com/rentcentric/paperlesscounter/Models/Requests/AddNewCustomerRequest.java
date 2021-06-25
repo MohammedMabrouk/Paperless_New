@@ -142,6 +142,7 @@ public class AddNewCustomerRequest {
     @Expose
     private String companyName;
 
+
     public AddNewCustomerRequest(CustomerCreditCardDto customerCreditCardDto,
                                  Integer locationId,
                                  String email,
